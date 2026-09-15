@@ -1,3 +1,5 @@
+""" Given a list of integers, generate all ppossible subsets of the set """
+
 def subset_generator(array:list):
     result = []
 
@@ -5,15 +7,14 @@ def subset_generator(array:list):
     def generator(current, index):
         if index == len(array):
             result.append(current.copy())
-            return result
-        for i in range(len(array)):
-            current.append(array[i])
-            generator(current, index + 1)
-            current.pop()
-            generator(current, index + 1)
+            return
+        current.append(array[index])
+        generator(current, index + 1)
+        current.pop()
+        generator(current, index + 1)
         return result
 
-    return generator(array, 0)
+    return generator([], 0)
 
 print(subset_generator([1,2,3]))
 

@@ -8,11 +8,11 @@ class TreeNode():
         return str(self.value)
 
 A = TreeNode(1)
-B = TreeNode(4)
-C = TreeNode(5)
-D = TreeNode(6)
-E = TreeNode(7)
-F = TreeNode(8)
+B = TreeNode(2)
+C = TreeNode(3)
+D = TreeNode(4)
+E = TreeNode(5)
+F = TreeNode(6)
 
 A.left = B
 A.right = C
@@ -32,5 +32,25 @@ def in_order_traversal(node:TreeNode):
         current = the_node.right
         print(the_node)
     return
+
+def post_order_traversal(node:TreeNode):
+    current = node
+    stack = []
+    seen = set()
+    while current or stack:
+        while current:
+            stack.append(current)
+            current = current.left
+        peeked = stack[-1]
+        if peeked.right and peeked.right not in seen:
+            current = peeked.right
+            seen.add(peeked.right)
+        else:
+            popped = stack.pop()
+            print(popped)
+    return
     
-print(in_order_traversal(A))
+
+
+    
+print(post_order_traversal(A))

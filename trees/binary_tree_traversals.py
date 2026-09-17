@@ -49,8 +49,19 @@ def post_order_traversal(node:TreeNode):
             popped = stack.pop()
             print(popped)
     return
+
+def pre_order_traversal(node:TreeNode):
+    stack = [node]
+    while stack:
+        current = stack.pop()
+        print(current)
+        if current.right:
+            stack.append(current.right)
+        if current.left:
+            stack.append(current.left)
+    return
     
 
 
     
-print(post_order_traversal(A))
+print(pre_order_traversal(A))
